@@ -111,12 +111,15 @@ const originalSlides =
 const firstClone = originalSlides[0].cloneNode(true);
 const lastClone =
   originalSlides[originalSlides.length - 1].cloneNode(true);
-// Add clone classes
-firstClone.classList.add("clone");
-lastClone.classList.add("clone");
-// Insert clones
-track.appendChild(firstClone);
-track.prepend(lastClone);
+
+if (!isMobile()) {
+  // Add clone classes
+  firstClone.classList.add("clone");
+  lastClone.classList.add("clone");
+  // Insert clones
+  track.appendChild(firstClone);
+  track.prepend(lastClone);
+}
 
 // Re-select all slides
 const slides = document.querySelectorAll(".testimonial-card");
@@ -204,23 +207,29 @@ window.addEventListener("resize", () => {
   }
 });
 
-let startX = 0;
+// SWIPING
 
-track.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
+// let startX = 0;
 
-track.addEventListener("touchend", e => {
+// track.addEventListener("touchstart", e => {
+//   startX = e.touches[0].clientX;
+// });
 
-  const endX = e.changedTouches[0].clientX;
+// track.addEventListener("touchend", e => {
 
-  const delta = startX - endX;
+//   const endX = e.changedTouches[0].clientX;
 
-  if (delta > 50) {
-    nextSlide();
-  }
+//   const delta = startX - endX;
 
-  if (delta < -50) {
-    prevSlide();
-  }
+//   if (delta > 90) {
+//     nextSlide();
+//   }
+
+//   if (delta < -90) {
+//     prevSlide();
+//   }
+// });
+
+var swiper = new Swiper(".testimonial-grid", {
+  rewind: true
 });

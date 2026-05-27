@@ -852,10 +852,13 @@ h3 {
 
   .carousel-wrapper {
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     touch-action: pan-x;
+    scroll-behavior: smooth;
+    padding-right: 1rem;
+    scroll-padding-left: 1rem;
   }
   .carousel-wrapper::-webkit-scrollbar {
     display: none;
@@ -871,7 +874,7 @@ h3 {
   }
 
   .testimonial-card {
-    flex: 0 0 100%;
+    flex: 0 0 92%;
     padding: 1.3rem;
     scroll-snap-align: start;
   }
