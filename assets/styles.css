@@ -694,13 +694,6 @@ h3 {
     text-align: center;
   }
 
-  .section-grid,
-  .method-layout,
-  .about-inner {
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-  }
-
   .about-proof,
   .source-links {
     grid-column: auto;
@@ -796,6 +789,13 @@ h3 {
     display: block;
   }
 
+  .section-grid,
+  .method-layout,
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
   .section-intro p,
   .section-list p,
   .useful-list p,
@@ -874,7 +874,7 @@ h3 {
   }
 
   .testimonial-card {
-    flex: 0 0 92%;
+    flex: 0 0 95%;
     padding: 1.3rem;
     scroll-snap-align: start;
   }

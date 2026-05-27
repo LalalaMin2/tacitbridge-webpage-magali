@@ -230,6 +230,12 @@ window.addEventListener("resize", () => {
 //   }
 // });
 
-var swiper = new Swiper(".testimonial-grid", {
-  rewind: true
+var swiper = new Swiper(".carousel-wrapper", {
+  slidesPerView : 1,
+  spaceBetween : 10,
+  loop: true,
+  pagination : {
+    el : '.swiper-pagination',
+    clickable : true,
+  },
 });
