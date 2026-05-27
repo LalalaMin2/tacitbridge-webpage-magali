@@ -98,66 +98,129 @@ if (navTargets.length) {
 }
 
 // testimonial carousel
-// const track = document.querySelector('.testimonial-grid');
-
-// document.querySelector('.next').addEventListener('click', () => {
-//   track.scrollBy({
-//     left: 470,
-//     behavior: 'smooth'
-//   });
-// });
-
-// document.querySelector('.prev').addEventListener('click', () => {
-//   track.scrollBy({
-//     left: -470,
-//     behavior: 'smooth'
-//   });
-// });
-
-
-
 const track = document.querySelector(".testimonial-grid");
-const slides = document.querySelectorAll(".testimonial-card");
 
-let index = 0; // start at real first slide
-const slideWidth = 570;
-
-function update() {
-  track.style.transform = `translateX(-${index * slideWidth}px)`;
+function isMobile() {
+  return window.innerWidth <= 760;
 }
 
-// next
-document.querySelector(".next").addEventListener("click", () => {
+const originalSlides =
+  document.querySelectorAll(".testimonial-card");
+
+// Clone first and last
+const firstClone = originalSlides[0].cloneNode(true);
+const lastClone =
+  originalSlides[originalSlides.length - 1].cloneNode(true);
+// Add clone classes
+firstClone.classList.add("clone");
+lastClone.classList.add("clone");
+// Insert clones
+track.appendChild(firstClone);
+track.prepend(lastClone);
+
+// Re-select all slides
+const slides = document.querySelectorAll(".testimonial-card");
+
+// Start on first REAL slide
+let index = 1;
+
+function getGap() {
+  return parseInt(
+    window.getComputedStyle(track).gap
+  );
+}
+
+function getSlideWidth() {
+  const gap = slides[1].getBoundingClientRect().left - slides[0].getBoundingClientRect().right;
+  return slides[index].getBoundingClientRect().width + getGap();
+}
+
+function update(animate = true) {
+  if (isMobile()) {
+    track.style.transition = "none";
+    track.style.transform = "none";
+    return;
+  }
+
+  if (!animate) {
+    track.style.transition = "none";
+  } else {
+    track.style.transition =
+      "transform 0.32s ease";
+  }
+  track.style.transform =
+    `translateX(-${index * getSlideWidth()}px)`;
+}
+
+// Initial position
+update(false);
+
+// NEXT
+function nextSlide() {
+  if (index >= slides.length - 1) return;
   index++;
   update();
+}
 
-  if (index === slides.length) {
-    setTimeout(() => {
-      track.style.transition = "none";
-      index = 0;
-      update();
-    }, 400);
+// PREV
+function prevSlide() {
+  if (index <= 0) return;
+  index--;
+  update();
+}
 
-    setTimeout(() => {
-      track.style.transition = "transform 0.4s ease";
-    }, 450);
+// Buttons
+document.querySelector(".next")
+  .addEventListener("click", nextSlide);
+
+document.querySelector(".prev")
+  .addEventListener("click", prevSlide);
+
+
+// Infinite reset logic
+track.addEventListener("transitionend", () => {
+  // If we're on cloned FIRST
+  if (isMobile()) return;
+  if (slides[index].classList.contains("clone")
+      && index === slides.length - 1) {
+    index = 1;
+    update(false);
+  }
+  // If we're on cloned LAST
+  if (slides[index].classList.contains("clone")
+      && index === 0) {
+    index = slides.length - 2;
+    update(false);
   }
 });
 
-// prev
-document.querySelector(".prev").addEventListener("click", () => {
-  index--;
-  update();
+// Resize handling
+window.addEventListener("resize", () => {
+  if (isMobile()) {
+    track.style.transition = "none";
+    track.style.transform = "none";
+  } else {
+    update(false);
+  }
+});
 
-  if (index === -1) {
-    setTimeout(() => {
-      track.style.transition = "none";
-      index = slides.length - 1;
-      update();
-    }, 400);
+let startX = 0;
 
-    setTimeout(() => {
-      track.style.transition = "transform 0.4s ease";
-    }, 450);
+track.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchend", e => {
+
+  const endX = e.changedTouches[0].clientX;
+
+  const delta = startX - endX;
+
+  if (delta > 50) {
+    nextSlide();
+  }
+
+  if (delta < -50) {
+    prevSlide();
   }
 });
