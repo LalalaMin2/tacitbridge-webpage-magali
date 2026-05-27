@@ -120,7 +120,7 @@ const track = document.querySelector(".testimonial-grid");
 const slides = document.querySelectorAll(".testimonial-card");
 
 let index = 0; // start at real first slide
-const slideWidth = 470;
+const slideWidth = 570;
 
 function update() {
   track.style.transform = `translateX(-${index * slideWidth}px)`;

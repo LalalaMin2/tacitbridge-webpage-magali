@@ -3,8 +3,8 @@
   --lightink: #f5eee7;
   --darkblue:#192236;
   --terracotta:#8a422d;
-  --bgwarm:#e8ded3;
-  --bglight:#f4efe8;
+  --bgwarm:#e6ded5;
+  --bglight:#f3efe9;
   --line: #d7cdc1;
 
   --radius: 8px;
@@ -58,13 +58,13 @@ h2,
 h3 {
   font-family: var(--titles);
   letter-spacing: 0;
-  overflow-wrap: break-word;
-  hyphens: auto;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 p {
-  overflow-wrap: break-word;
-  hyphens: auto;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 h1 {
@@ -76,7 +76,7 @@ h1 {
 h2 {
   font-size: 2.5rem;
   font-weight:400;
-  line-height: 1.05;
+  line-height: 1.1;
 }
 
 h3 {
@@ -102,10 +102,9 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   background: var(--bgwarm);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(0,0,0,0.04);
 }
 
 .brand {
@@ -127,7 +126,7 @@ h3 {
   min-width: 0;
   color: var(--ink); opacity:0.7;
   font-family: var(--body);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -156,6 +155,7 @@ h3 {
 .site-nav a:focus-visible,
 .site-nav a[aria-current="true"] {
   color: var(--terracotta);
+  font-weight:800;
 }
 
 .hero {
@@ -197,7 +197,7 @@ h3 {
   font-family: var(--titles);
   font-size: 2rem;
   line-height: 1.1;
-  color: var(--terracotta);
+  color: #d4845e;
   margin-bottom: 46px;
   max-width: 720px;
 }
@@ -305,8 +305,12 @@ h3 {
 .section-list p,
 .useful-list p {
   color: var(--ink);
-  font-size: 1.08rem;
+  font-size: 1.03rem;
   line-height: 1.55;
+}
+
+.useful-list p {
+  font-size:0.95rem;
 }
 
 .step-list span {
@@ -324,15 +328,35 @@ h3 {
   margin-top: 0.48rem;
 }
 
-.outcome-section {
-  padding-top: 4.75rem;
+.outcome-section, .useful-section {
+  padding-top: 5.2rem;
+}
+
+.useful-section {
+  padding-bottom: 5.2rem;
+}
+
+.outcome-section .accent-line,
+.useful-section .accent-line {
+  width: 40px;
+  height: 4px;
+  background: var(--terracotta);
+  margin-top: 12px;
+  margin-bottom: 24px;
+
 }
 
 .resonance-section h2 {
-  margin-top:5rem;
+  margin-top:4rem;
 }
 .how-section h2 {
   margin-top:10rem;
+}
+.outcome-section h2 {
+  margin-top:1.5rem;
+}
+.useful-section h2 {
+  margin-top:2rem;
 }
 
 .useful-list article,
@@ -340,6 +364,9 @@ h3 {
   border-radius: var(--radius);
   background:
     var(--bgwarm);
+}
+.useful-list article {
+  margin-top: 1rem;
 }
 
 .testimonials-section {
@@ -358,14 +385,14 @@ h3 {
 
 .carousel-wrapper{
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   overflow: hidden;
   margin: auto;
 }
 
 .testimonial-grid {
   display:flex;
-  gap:40px;
+  gap:30px;
 
   transition: transform 0.4s ease;
 }
@@ -374,21 +401,25 @@ h3 {
 }
 
 .testimonial-card {
-  flex: 0 0 calc(50% - 20px);
+  flex: 0 0 calc(50% - 10px);
   min-width: 0;
   margin: 0;
-  padding: 1.35rem;
+  padding: 2.5rem 2.5rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius);
   color: var(--lightink);
   background:
     var(--darkblue);
   box-shadow: 0 20px 42px rgba(17, 27, 32, 0.12);
+  justify-items:stretch;
+
 }
 
 .testimonial-card p {
   color: var(--lightink);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align:justify;
 }
 
 .testimonial-card figcaption {
@@ -414,16 +445,16 @@ h3 {
 }
 
 .carousel-btn{
-  width:52px;
-  height:52px;
+  width:30px;
+  height:30px;
 
   border:none;
   border-radius:50%;
 
   cursor:pointer;
 
-  background:var(--terracotta);
-  color:var(--lightink);
+  background:var(--bgwarm);
+  color:var(--darkblue);
 
   font-size:1.5rem;
 
@@ -437,7 +468,6 @@ h3 {
 }
 
 .about-band {
-  margin-top: 1rem;
   color: var(--bglight);
   background:
     var(--terracotta);
@@ -448,6 +478,7 @@ h3 {
   grid-template-columns: 40% 60%;
   gap: 2rem;
   padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 .about-portrait {
@@ -517,19 +548,20 @@ h3 {
   min-height: 38px;
   align-items: center;
   padding: 0.5rem 1rem;
-  text-decoration: underline;
   font-size: 1.2rem;
   font-weight: 600;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .source-links a:hover,
 .source-links a:focus-visible {
   color: var(--lightink);
   border-color: rgba(255, 255, 255, 0.42);
+  text-decoration: underline;
 }
 
-.closing-cta {
+.closing-cta, .foundation {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -564,6 +596,30 @@ h3 {
 .carousel-btn:focus-visible {
   outline: 2px solid var(--terracotta);
   outline-offset: 3px;
+}
+
+.foundation p {
+  max-width: 50rem;
+  font-size:0.8rem;
+}
+.foundation .description {
+  font-size:0.9rem;
+  margin-bottom:0.5rem;
+}
+.foundation .eyebrow {
+  font-size: 1.08rem;
+}
+
+.site-footer {
+  width: min(calc(100% - 2.5rem), var(--max-width));
+  margin: 0 auto;
+  padding: 1.6rem 0 2rem;
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
 }
 
 
