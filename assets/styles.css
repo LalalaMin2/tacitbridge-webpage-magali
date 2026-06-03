@@ -182,8 +182,18 @@ h3 {
   background:
     var(--darkblue)
 }
+.hero-intro {
+  font-family: var(--titles);
+  font-size: 3.6rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--orange);
+    text-shadow: 0 0 8px rgba(211, 120, 70, 0.25);
+  margin-bottom: 46px;
+  max-width: 720px;
+}
 
-.hero-intro, .hero-description {
+.hero-description {
   max-width: 720px;
   font-size: 1rem;
   line-height: 1.9;
