@@ -991,3 +991,48 @@ h3 {
     animation-iteration-count: 1 !important;
   }
 }
+.grouped-steps {
+  display: grid;
+  gap: 1rem;
+}
+
+.step-group {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--terracotta);
+  border-radius: var(--radius);
+  background: var(--bglight);
+  box-shadow: 0 14px 34px rgba(17, 27, 32, 0.055);
+}
+
+.step-group-title {
+  color: var(--terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.step-item {
+  padding: 0.2rem 0;
+}
+
+.step-item + .step-item {
+  border-top: 1px solid var(--line);
+}
+
+.step-item span {
+  display: block;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.step-item h3 {
+  margin: 0;
+}
+
+.step-item p {
+  margin-top: 0.5rem;
+}
