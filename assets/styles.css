@@ -139,7 +139,7 @@ h3 {
   min-width: 0;
   color: var(--ink); opacity:0.7;
   font-family: var(--body);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -148,7 +148,7 @@ h3 {
 .nav-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1.2rem;
 }
 
 .site-nav a {
