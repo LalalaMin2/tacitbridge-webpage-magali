@@ -1321,3 +1321,28 @@ h3 {
   .hero .accent-line { margin-top: 0; margin-bottom: 20px; }
   .hero-question { margin-bottom: 40px; }
 }
+/* Corrections mobile et marges (10 novembre) */
+.closing-cta,
+.foundation {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 760px) {
+  .hero br {
+    display: none;
+  }
+
+  .about-credentials div:nth-child(n) strong,
+  .about-credentials div:nth-child(n) span {
+    text-align: left;
+  }
+
+  .about-credentials div:nth-child(n) a {
+    justify-content: flex-start;
+  }
+
+  .about-copy p:not(.eyebrow) {
+    font-size: 1.05rem;
+  }
+}
