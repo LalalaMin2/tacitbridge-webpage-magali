@@ -1346,3 +1346,13 @@ h3 {
     font-size: 1.05rem;
   }
 }
+/* Tablette (10 novembre) */
+@media (max-width: 1100px) {
+  .hero br {
+    display: none;
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+  }
+}
